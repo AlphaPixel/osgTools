@@ -55,6 +55,41 @@
         };
       });
 
+      packages = forEachSystem (system: {
+        default =
+          let
+            pkgs = import nixpkgs {
+              inherit system;
+              config = {
+                #allowUnfree = true;
+              };
+            };
+          in
+          pkgs.stdenv.mkDerivation {
+            pname = "osgTools";
+            version = "0.1.0";
+            src = ./.;
+            nativeBuildInputs = with pkgs; [
+              clang-tools
+              clang
+              cmake
+              dlib
+              gdb
+              llvmPackages_18.libstdcxxClang
+              ninja
+              pkg-config
+            ];
+            buildInputs = with pkgs; [
+              curl
+              libGL
+              libpng
+              mesa-gl-headers
+              openscenegraph
+              zstd
+            ];
+          };
+      });
+
       # Enter a development shell with `nix develop`.
       # The hooks will be installed automatically.
       # Or run pre-commit manually with `nix develop -c pre-commit run --all-files`
@@ -68,8 +103,10 @@
               };
             };
             inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+            osgTools = self.packages.${system}.default;
           in
           pkgs.mkShell {
+            inputsFrom = [ osgTools ];
             inherit shellHook;
 
             nativeBuildInputs = with pkgs; [
@@ -87,15 +124,6 @@
               nix-index
               pkg-config
               pre-commit
-            ];
-            # Dependencies that only exist in the runtime environment
-            buildInputs = with pkgs; [
-              curl
-              libGL
-              libpng
-              mesa-gl-headers
-              openscenegraph
-              zstd
             ];
           };
       });
