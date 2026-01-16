@@ -77,7 +77,6 @@
               gdb
               llvmPackages_18.libstdcxxClang
               ninja
-              pkg-config
             ];
             buildInputs = with pkgs; [
               curl
@@ -115,7 +114,6 @@
               clang
               cmake
               cmake-format
-              dlib
               gdb
               git
               git-lfs

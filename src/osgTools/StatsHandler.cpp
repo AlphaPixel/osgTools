@@ -1,4 +1,4 @@
-#include "StatsHandler.h"
+#include <osgTools/StatsHandler.h>
 
 #include <string>
 
