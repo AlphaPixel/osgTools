@@ -27,7 +27,7 @@ install(
   EXPORT osgToolsTargets
   FILE osgToolsTargets.cmake
   NAMESPACE osgTools::
-  DESTINATION lib/cmake/osgTools)
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/osgTools)
 
 include(GNUInstallDirs)
 set(INCLUDE_INSTALL_DIR
