@@ -15,4 +15,4 @@ find_package(
 
 add_subdirectory(src)
 
-install(FILES cmake/FindosgTools.cmake DESTINATION share/cmake/osgTools)
+install(FILES cmake/FindosgTools.cmake DESTINATION lib/cmake/osgTools)
