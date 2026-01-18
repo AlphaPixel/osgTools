@@ -17,10 +17,17 @@ target_sources(
 
 install(
   TARGETS osgTools
+  EXPORT osgToolsTargets
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
           FILE_SET HEADERS
           DESTINATION include)
+
+install(
+  EXPORT osgToolsTargets
+  FILE osgToolsTargets.cmake
+  NAMESPACE osgTools::
+  DESTINATION lib/cmake/osgTools)
 
 include(GNUInstallDirs)
 set(INCLUDE_INSTALL_DIR
