@@ -4,7 +4,6 @@ add_library(
 
 add_library(osgTools::osgTools ALIAS osgTools)
 
-target_include_directories(osgTools PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_link_libraries(osgTools PUBLIC ${OPENSCENEGRAPH_LIBRARIES})
 target_sources(
   osgTools
@@ -18,7 +17,17 @@ target_sources(
 
 install(
   TARGETS osgTools
+  EXPORT osgToolsPackageConfig
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
           FILE_SET HEADERS
           DESTINATION include)
+
+export(
+  TARGETS osgTools
+  NAMESPACE osgTools::
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/osgToolsConfig.cmake")
+install(
+  EXPORT osgToolsPackageConfig
+  DESTINATION lib/cmake/osgTools
+  NAMESPACE osgTools::)
