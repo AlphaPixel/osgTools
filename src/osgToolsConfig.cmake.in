@@ -5,3 +5,5 @@ set(OSGTOOLS_VERSION 0.1.0)
 set_and_check(OSGTOOLS_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
 
 check_required_components(osgTools)
+
+add_library(osgTools::osgTools ALIAS osgTools)
