@@ -26,15 +26,12 @@ include(GNUInstallDirs)
 set(INCLUDE_INSTALL_DIR
     ${CMAKE_INSTALL_INCLUDEDIR}/osgTools
     CACHE PATH "Location of header files")
-set(SYSCONFIG_INSTALL_DIR
-    ${CMAKE_INSTALL_SYSCONFDIR}/osgTools
-    CACHE PATH "Location of configuration files")
 # ...
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
   osgToolsConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/osgToolsConfig.cmake
   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/osgTools
-  PATH_VARS INCLUDE_INSTALL_DIR SYSCONFIG_INSTALL_DIR)
+  PATH_VARS INCLUDE_INSTALL_DIR)
 write_basic_package_version_file(
   ${CMAKE_CURRENT_BINARY_DIR}/osgToolsConfigVersion.cmake
   VERSION 0.1.0
