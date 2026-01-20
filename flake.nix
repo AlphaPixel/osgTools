@@ -5,6 +5,7 @@
     git-hooks.url = "github:cachix/git-hooks.nix";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     systems.url = "github:nix-systems/default";
+    overlay.url = "./empty_overlay";
   };
 
   outputs =
@@ -17,6 +18,7 @@
     }@inputs:
     let
       forEachSystem = nixpkgs.lib.genAttrs (import systems);
+      inputOverlays = inputs.overlay;
     in
     {
       # Run the hooks with `nix fmt`.
@@ -60,6 +62,7 @@
           let
             pkgs = import nixpkgs {
               inherit system;
+              overlays = [ inputOverlays ];
               config = {
                 #allowUnfree = true;
               };

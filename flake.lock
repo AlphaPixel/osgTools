@@ -89,10 +89,22 @@
         "type": "github"
       }
     },
+    "overlay": {
+      "locked": {
+        "path": "./empty_overlay",
+        "type": "path"
+      },
+      "original": {
+        "path": "./empty_overlay",
+        "type": "path"
+      },
+      "parent": []
+    },
     "root": {
       "inputs": {
         "git-hooks": "git-hooks",
         "nixpkgs": "nixpkgs_2",
+        "overlay": "overlay",
         "systems": "systems"
       }
     },
