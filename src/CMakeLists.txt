@@ -1,6 +1,7 @@
 add_library(
-  osgTools STATIC osgTools/StatsHandler.cpp include/osgTools/StatsHandler.h
-                  include/osgTools/Version.h)
+  osgTools STATIC
+  osgTools/StatsHandler.cpp include/osgTools/GraphicsOperations.h
+  include/osgTools/StatsHandler.h include/osgTools/Version.h)
 
 add_library(osgTools::osgTools ALIAS osgTools)
 
@@ -12,6 +13,7 @@ target_sources(
          BASE_DIRS
          include
          FILES
+         include/osgTools/GraphicsOperations.h
          include/osgTools/StatsHandler.h
          include/osgTools/Version.h)
 
