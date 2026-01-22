@@ -1,21 +1,14 @@
-add_library(
-  osgTools STATIC
-  osgTools/StatsHandler.cpp include/osgTools/GraphicsOperations.h
-  include/osgTools/StatsHandler.h include/osgTools/Version.h)
+set(PUBLIC_HEADERS
+    include/osgTools/GraphicsOperations.h include/osgTools/PointShaderProgram.h
+    include/osgTools/StatsHandler.h include/osgTools/Version.h)
+add_library(osgTools STATIC osgTools/PointShaderProgram.cpp
+                            osgTools/StatsHandler.cpp "${PUBLIC_HEADERS}")
 
 add_library(osgTools::osgTools ALIAS osgTools)
 
 target_link_libraries(osgTools PUBLIC ${OPENSCENEGRAPH_LIBRARIES})
-target_sources(
-  osgTools
-  PUBLIC FILE_SET
-         HEADERS
-         BASE_DIRS
-         include
-         FILES
-         include/osgTools/GraphicsOperations.h
-         include/osgTools/StatsHandler.h
-         include/osgTools/Version.h)
+target_sources(osgTools PUBLIC FILE_SET HEADERS BASE_DIRS include FILES
+                               "${PUBLIC_HEADERS}")
 
 install(
   TARGETS osgTools
