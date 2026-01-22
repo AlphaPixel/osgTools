@@ -19,7 +19,7 @@ const char* vertexShaderSource = R"(
 
         // Be sure and call `StateSet::setMode(GL_PROGRAM_POINT_SIZE, osg::StateAttribute::ON)`, or
         // this will be a no-op! IMPORTANT!
-        gl_PointSize = 10.0;
+        gl_PointSize = 1.0;
     }
 )";
 
