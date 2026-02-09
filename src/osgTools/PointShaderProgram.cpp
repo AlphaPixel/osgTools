@@ -9,6 +9,7 @@ const char* vertexShaderSource = R"(
     in vec4 osg_Color;
 
     uniform mat4 osg_ModelViewProjectionMatrix;
+    uniform float pointSize = 2.0;
 
     out vec4 vertexColor;
 
@@ -19,7 +20,7 @@ const char* vertexShaderSource = R"(
 
         // Be sure and call `StateSet::setMode(GL_PROGRAM_POINT_SIZE, osg::StateAttribute::ON)`, or
         // this will be a no-op! IMPORTANT!
-        gl_PointSize = 1.0;
+        gl_PointSize = pointSize;
     }
 )";
 
