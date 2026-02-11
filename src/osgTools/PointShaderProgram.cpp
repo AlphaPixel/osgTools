@@ -9,7 +9,7 @@ const char* vertexShaderSource = R"(
     in vec4 osg_Color;
 
     uniform mat4 osg_ModelViewProjectionMatrix;
-    uniform double pointSize;
+    uniform float pointSize;
 
     out vec4 vertexColor;
 
